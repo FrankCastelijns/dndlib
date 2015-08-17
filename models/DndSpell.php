@@ -171,12 +171,37 @@ class DndSpell extends \yii\db\ActiveRecord
     {
         return $this->hasMany(DndSpellclasslevel::className(), ['spell_id' => 'id']);
     }
-
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getDndSpelldomainlevels()
     {
         return $this->hasMany(DndSpelldomainlevel::className(), ['spell_id' => 'id']);
+    }
+     /**
+     * @return string
+     */
+    public function getClassAndLevels(){
+        $gridviewoutput = "";
+        foreach ($this->dndSpellclasslevels as $spellclasslevel){
+            $class = $spellclasslevel->characterClass;
+            $gridviewoutput.=$class->name." ".$spellclasslevel->level.", ";
+        }
+        foreach ($this->dndSpelldomainlevels as $spelldomainlevel){
+            $domain = $spelldomainlevel->domain;
+            $gridviewoutput.=$domain->name." ".$spelldomainlevel->level.", ";
+        }
+        $gridviewoutput = rtrim($gridviewoutput,', ');
+        return $gridviewoutput;
+    }
+    
+    public function getDescriptors(){
+        $gridviewoutput = "";
+        foreach ($this->dndSpellDescriptors as $spelldescriptor){
+            $desc = $spelldescriptor->spelldescriptor;
+            $gridviewoutput.=$desc->name.", ";
+        }
+        $gridviewoutput = rtrim($gridviewoutput,', ');
+        return $gridviewoutput;
     }
 }
