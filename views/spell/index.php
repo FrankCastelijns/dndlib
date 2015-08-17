@@ -24,11 +24,6 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
-            'added',
-            'rulebook_id',
-            'page',
             'name',
             // 'school_id',
             // 'sub_school_id',
@@ -47,6 +42,11 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'saving_throw',
             // 'spell_resistance',
             // 'description:ntext',
+            ['attribute'=>'school','value'=>'school.name'],
+            ['attribute'=>'subSchool','value'=>'subSchool.name'],
+            ['attribute'=>'descriptor','value'=>'descriptors'],
+            ['attribute'=>'rulebook','value'=>'rulebook.name'],
+            ['attribute'=>'classLevels','value'=>'classandlevels'],
             // 'slug',
             // 'meta_breath_component',
             // 'true_name_component',

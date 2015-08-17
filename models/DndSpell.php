@@ -191,17 +191,19 @@ class DndSpell extends \yii\db\ActiveRecord
             $domain = $spelldomainlevel->domain;
             $gridviewoutput.=$domain->name." ".$spelldomainlevel->level.", ";
         }
-        $gridviewoutput = rtrim($gridviewoutput,', ');
-        return $gridviewoutput;
+        $gridviewoutput_trimmed = rtrim($gridviewoutput,', ');
+        return $gridviewoutput_trimmed;
     }
-    
+     /**
+     * @return string
+     */
     public function getDescriptors(){
         $gridviewoutput = "";
         foreach ($this->dndSpellDescriptors as $spelldescriptor){
             $desc = $spelldescriptor->spelldescriptor;
             $gridviewoutput.=$desc->name.", ";
         }
-        $gridviewoutput = rtrim($gridviewoutput,', ');
-        return $gridviewoutput;
+        $gridviewoutput_trimmed = rtrim($gridviewoutput,', ');
+        return $gridviewoutput_trimmed;
     }
 }
